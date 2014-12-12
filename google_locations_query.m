@@ -11,7 +11,6 @@ type='"AVAIL_SPECTRUM_REQ"';
 height= 30.0; %In meters; Note: 'height' needs decimal value
 agl='"AMSL"';
 num_of_steps = [1 2 4 8 16 32 64 128 256 512]; % will be increased inside the for loop
-num_of_spets_increase = 10; %THIS SHOULD BE CHANGED TO A VECTOR TO HAVE DIFFERENT INCREMENETS
 key_counter = 0;
 fileId = 0 ;
 %%
@@ -49,7 +48,7 @@ fileId = 0 ;
                     multi_location_query_google_interval(type,lat_start ,lat_end ,long_start,...
                     long_end,num_of_steps(i),height,agl,key_counter, my_path );
                 
-                delay_temp = [delay_temp  delay_google_tmp];
+                delay_te mp = [delay_temp  delay_google_tmp];
                 
                 % writing the response to a file
                 if error_google_tmp==0
@@ -67,9 +66,6 @@ fileId = 0 ;
             delay_google = [delay_google delay];
             delay_temp = [] ;
             delay = [] ;
-            % Collecting the number of locations being 
-           % num_of_locations = [num_of_locations num_of_steps ];
-          %  num_of_steps = num_of_steps + num_of_spets_increase;
     end
     
     %%
