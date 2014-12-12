@@ -66,7 +66,7 @@ function  query_generator_interval...
 %two points
 
 % Dividing the distance into segmets to be queried gradually 
-distance_divider = 512 ;
+distance_divider = 256 ;
 
  cd([my_path,'/google']);
 %To start the json array
