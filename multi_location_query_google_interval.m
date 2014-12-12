@@ -83,14 +83,14 @@ latitude = linspace(latitude_start,latitude_end , distance_divider);
         comma = '';
     end
     
-    if num_of_steps == 1
-        count = 1;
-    else 
-        count = num_of_steps - 1; % -1 is need it because initially it is set to 1 and then increased by 10
-    end
+%     if num_of_steps == 1
+%         count = 1;
+%     else 
+%         count = num_of_steps - 1; % -1 is need it because initially it is set to 1 and then increased by 10
+%     end
     
-for i = 1:count 
-    if i == count
+for i = 1:num_of_steps 
+    if i == num_of_steps
         comma='';
     end
     request=['{"jsonrpc": "2.0",',...
