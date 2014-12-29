@@ -1,3 +1,14 @@
+%   Amjad Yousef Majid  
+%   Reference: [1] "Will Dynamic Spectrum Access Drain my
+%   Battery?", submitted for publication, July 2014
+
+%   Code development: 
+
+%   Last update: 29 Dec 2014
+
+%   This work is licensed under a Creative Commons Attribution 3.0 Unported
+%   License. Link to license: http://creativecommons.org/licenses/by/3.0/
+
 function [response , delay , error] =  multi_location_query_google_interval...
     ( latitude_start, latitude_end, longitude_start,...
     longitude_end ,num_of_steps,height, distance_divider, key_counter, my_path)

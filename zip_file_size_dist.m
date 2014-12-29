@@ -1,5 +1,15 @@
 %This script calculate the size of files and plot the distribution
 %further it calculate the overall redaction persentage in size 
+%   Amjad Yousef Majid  
+%   Reference: [1] "Will Dynamic Spectrum Access Drain my
+%   Battery?", submitted for publication, July 2014
+
+%   Code development: 
+
+%   Last update: 29 Dec 2014
+
+%   This work is licensed under a Creative Commons Attribution 3.0 Unported
+%   License. Link to license: http://creativecommons.org/licenses/by/3.0/
 
 clc
 clear

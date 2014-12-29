@@ -1,3 +1,14 @@
+%   Amjad Yousef Majid  
+%   Reference: [1] "Will Dynamic Spectrum Access Drain my
+%   Battery?", submitted for publication, July 2014
+
+%   Code development: 
+
+%   Last update: 29 Dec 2014
+
+%   This work is licensed under a Creative Commons Attribution 3.0 Unported
+%   License. Link to license: http://creativecommons.org/licenses/by/3.0/
+
 tic; 
 clear; 
 close all; 
@@ -8,11 +19,11 @@ my_path='/home/amjed/Documents/Gproject/workspace/data/WSDB_DATA';
 %%
 %Global Google parameters (refer to https://developers.google.com/spectrum/v1/paws/getSpectrum)
 height= 30.0; %In meters; Note: 'height' needs decimal value
-num_of_steps = [1 2 4 8 16 32]% 64 128] %256]; 
+num_of_steps = [1 2 4 8 16 32 64]% 128] %256]; 
 distance_divider =  num_of_steps(length(num_of_steps));
 key_counter = 0;
 fileId = 0 ;
-num_of_query_per_location = 13;
+num_of_query_per_location = 20;
 %%
     %The data stored in the file as longitude latitude longitude latitude
     format long;
@@ -36,9 +47,8 @@ for k=1:r
                     %We need this counter to switch keys once we reachedf 1000
                     %or a multiple of it
                     key_counter = key_counter + num_of_steps(i) ; % num_of_steps reperesents the  number of locations being queried in one json array (one request)
-                    %disp(['key_counter' ,num2str(key_counter)]) % for debugging
                      cd([my_path,'/google']);
-
+                    
                     [msg_google,delay_google_tmp,error_google_tmp]=...
                         multi_location_query_google_interval(...
                         lat_start ,lat_end ,long_start,long_end,num_of_steps(i),height , distance_divider ,key_counter, my_path );
@@ -49,6 +59,11 @@ for k=1:r
                     if error_google_tmp==0
                         var_name_txt=strcat(num2str(fileId));
                         var_name_zip=strcat(num2str(fileId));     
+                         var_name=(['google_', num2str(fileId) , '_',datestr(clock, 'DD_mm_YYYY_HH_MM_SS')]);
+                     
+                         dlmwrite(['data/',var_name,'.txt'],msg_google,'');
+                        %The following output used in zip_file_size_dist.m
+                        %and for compression 
                         dlmwrite(['txt/',var_name_txt,'.txt'],msg_google,'');
                         zip(['zip/',var_name_zip], ['txt/',var_name_txt,'.txt']);
                         gzip( ['txt/',var_name_txt,'.txt'] ,'gzip/' );
