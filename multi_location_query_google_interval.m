@@ -1,10 +1,9 @@
-%   Amjad Yousef Majid  
 %   Reference: [1] "Will Dynamic Spectrum Access Drain my
 %   Battery?", submitted for publication, July 2014
 
-%   Code development: 
+%   Code development: Amjed Yousef Majid (amjadyousefmajid@student.tudelft.nl), Przemyslaw Pawelczak (p.pawelczak@tudelft.nl)
 
-%   Last update: 29 Dec 2014
+%   Last update: 7 January 2015
 
 %   This work is licensed under a Creative Commons Attribution 3.0 Unported
 %   License. Link to license: http://creativecommons.org/licenses/by/3.0/
