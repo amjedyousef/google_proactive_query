@@ -9,18 +9,18 @@
 %   License. Link to license: http://creativecommons.org/licenses/by/3.0/
 
 function [response , delay , error] =  multi_location_query_google_interval...
-    ( latitude_start, latitude_end, longitude_start,...
+    (latitude_start, latitude_end, longitude_start,...
     longitude_end ,num_of_steps,height, distance_divider, key_counter, my_path)
 %%
 %Global Google parameters (refer to https://developers.google.com/spectrum/v1/paws/getSpectrum)
-agl='"AMSL"';
-request_type='"AVAIL_SPECTRUM_REQ"';
-server_name='https://www.googleapis.com/rpc';
+agl = '"AMSL"';
+request_type = '"AVAIL_SPECTRUM_REQ"';
+server_name = 'https://www.googleapis.com/rpc';
 
-error=false; %Default error value
-delay=[]; %Default delay value
-text_coding='"Content-Type: application/json ; charset=utf-8; "';
-device_type='"MODE_2"'; %Types of TVWS device: http://en.wikipedia.org/wiki/TV-band_device
+error = false; %Default error value
+delay = []; %Default delay value
+text_coding = '"Content-Type: application/json ; charset=utf-8; "';
+device_type = '"MODE_2"'; %Types of TVWS device: http://en.wikipedia.org/wiki/TV-band_device
 %%
 key = key_selector(key_counter);
 
@@ -47,8 +47,8 @@ else
     % This number needs to be change with number of locations
     pos_end_query_str = pos_end_query_str(end);
    
-    length_end_query_str=length(end_query_str)+21; %Note: constant 21 added due to padding of '}' in JSON response
-    delay=  str2num(response(pos_end_query_str+length_end_query_str:end));
+    length_end_query_str = length(end_query_str)+21; %Note: constant 21 added due to padding of '}' in JSON response
+    delay = str2num(response(pos_end_query_str+length_end_query_str:end));
     response(pos_end_query_str+length_end_query_str:end)=[];
 end
 system('rm google.json');
