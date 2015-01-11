@@ -1,5 +1,4 @@
-%  zip_file_size_dist generate a bar plot reperesenting the size of the
-%  files in a folder
+%  key_selector select a google api key
 %   Last update: 11 January 2015
 
 % Reference:
@@ -39,51 +38,36 @@
 % NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 % SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-clc
-clear
-txt_sizes = [];
-zip_sizes = [];
-gzip_sizes = [];
-num_of_files_to_be_read = 33 ;
+function [ key ] = key_selector( key_counter )
+%This function will get a counter and return a google api key
 
-txt_dir=dir('/home/amjed/Documents/Gproject/workspace/data/WSDB_DATA/txt/');
-zip_dir=dir('/home/amjed/Documents/Gproject/workspace/data/WSDB_DATA/zip/');
-gzip_dir=dir('/home/amjed/Documents/Gproject/workspace/data/WSDB_DATA/gzip/');
-
-for i = 1:num_of_files_to_be_read
-    % we need to use the strcmp to control the which file to read
-    str  = [num2str(i) , '.txt'];
-    index = strcmp({txt_dir.name}, str)
-    
-    txt_fileSize = txt_dir(index).bytes;
-    zip_fileSize = zip_dir(index).bytes;
-    tar_fileSize = gzip_dir(index).bytes;
-   txt_sizes = [txt_sizes txt_fileSize];
-   zip_sizes = [zip_sizes zip_fileSize];
-   gzip_sizes = [gzip_sizes tar_fileSize];
+ if key_counter < 1000
+          key='"AIzaSyAYMovM80dqfP8kwFXPyO8A-GMSOl-Bmu0"';    
+    elseif key_counter < 2000
+         key='"AIzaSyAzPFUygHFwOfoU8uzDtSma0sHgoFtRIU4"';     
+     elseif key_counter < 3000
+          key='"AIzaSyAX0R4PSx9taUbFNyo9Ka5W1dGU2Xt72Dc"';
+     elseif key_counter < 4000
+          key='"AIzaSyCzAkKfQl93D8xAv_4kyMJSnvX1xz7VT6Q"';
+     elseif key_counter < 5000
+          key='"AIzaSyD9kWXHHBL4zkXfEPUIzahPJUwXoqygzKU"';
+     elseif key_counter < 6000 
+        key='"AIzaSyAWyzxfLNLV8ls-hhjGu1tZrTYUjZHnmH0"';
+     elseif key_counter < 7000
+         key='"AIzaSyDESRe8rnVr4r-be1higwGmfAgE8nOS1CU"';
+     elseif key_counter < 8000
+         key='"AIzaSyBORRyv4vfrKJ6D73P0qJZjp-dgYlD9If4"';
+     elseif key_counter < 9000
+         key = '"AIzaSyDdYFocs4Jdvp0DhfbPFNsvZeviNC9x6eo"'; 
+    elseif key_counter < 10000
+          key='"AIzaSyCFBZevCyqYzwrW-i0mbb0sMtFSUt-rAnA"';
+    elseif key_counter < 11000
+         key ='"AIzaSyAB5Qtjau-4enAmiWL-a_wMTq5Nvb9QPY8"';
+     elseif key_counter < 12000
+         key='"AIzaSyDniefmKJNv42I6w7kEkDQc2QLkLs-omQ0"';
+ else
+         key='"AIzaSyCCweYzxC6BHSFqDbvDr6Jf4k1GNKWpivI"';
+        
+ end
 end
 
-%%
-%Ploting the figures 
-subplot(3,1,1)
-bar(txt_sizes )
-title('Plain text message sizes')
-ylabel('Message size (bytes)')
-
-subplot(3,1,2)
-bar(zip_sizes , 'r' , 'EdgeColor' , 'r')
-title('Zipped message sizes')
-ylabel('Message size (bytes)')
-
-subplot(3,1,3)
-bar(gzip_sizes , 'g' , 'EdgeColor','g')
-title('Gzipped message sizes')
-ylabel('Message size (bytes)');
-xlabel('Number of queries');
-
-%%
-red_zip =  (   (sum(txt_sizes) - sum(zip_sizes)) / sum(txt_sizes))  * 100 ;
-fprintf('zip  overall reduction is %.2f %%  \n' , red_zip);  
-
-red_tar =  (   (sum(txt_sizes) - sum(gzip_sizes)) / sum(txt_sizes))  * 100 ;
-fprintf('tar overall reduction is %.2f %%  \n' , red_tar);  
