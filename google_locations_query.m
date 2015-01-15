@@ -41,6 +41,7 @@ tic;
 clear;
 close all;
 clc;
+fontSize=16;
 %%
 %Path to save files (select your own)
 my_path='/home/amjed/Documents/Gproject/workspace/data/WSDB_DATA';
@@ -74,9 +75,12 @@ for k=1:r
     %collect the delay
     delay_temp=[];
     delay_google=[];
+    counter = 0 ;
     for i = 1:length(num_of_steps)
         for j = 1:num_of_query_per_location
             fileId = fileId + 1 ;
+            counter = counter +1; 
+            disp(counter);
             %We need this counter to switch keys once we reachedf 1000
             %or a multiple of it
             key_counter = key_counter + num_of_steps(i) ; % num_of_steps reperesents the  number of locations being queried in one json array (one request)
@@ -110,16 +114,23 @@ for k=1:r
         delay_temp = [] ;
         delay = [] ;
     end
+
     %%
     hold on
-    plot(num_of_steps , delay_google , '-*', 'LineWidth' , 1);
+    plot(num_of_steps , delay_google , '-*', 'LineWidth' , 2);
     xlabel('Number of locations per one request');
     ylabel('Delay (sec)');
+    set(gca,'FontSize',fontSize);
     delay_google_vec = [delay_google_vec delay_google];
     delay_google = []; % reset required for the next step
 end
 legend('10km','10km','10km','50km','across US')
 hold off
+
+
+%%
+%save the workspace
+save('google-delay-proactive-query-matlab-workspace.mat');
 
 %%
 ['Elapsed time: ',num2str(toc/60),' min']

@@ -41,33 +41,59 @@
 function [ key ] = key_selector( key_counter )
 %This function will get a counter and return a google api key
 
- if key_counter < 1000
-          key='"AIzaSyAYMovM80dqfP8kwFXPyO8A-GMSOl-Bmu0"';    
-    elseif key_counter < 2000
-         key='"AIzaSyAzPFUygHFwOfoU8uzDtSma0sHgoFtRIU4"';     
-     elseif key_counter < 3000
-          key='"AIzaSyAX0R4PSx9taUbFNyo9Ka5W1dGU2Xt72Dc"';
-     elseif key_counter < 4000
-          key='"AIzaSyCzAkKfQl93D8xAv_4kyMJSnvX1xz7VT6Q"';
-     elseif key_counter < 5000
-          key='"AIzaSyD9kWXHHBL4zkXfEPUIzahPJUwXoqygzKU"';
-     elseif key_counter < 6000 
-        key='"AIzaSyAWyzxfLNLV8ls-hhjGu1tZrTYUjZHnmH0"';
-     elseif key_counter < 7000
-         key='"AIzaSyDESRe8rnVr4r-be1higwGmfAgE8nOS1CU"';
-     elseif key_counter < 8000
-         key='"AIzaSyBORRyv4vfrKJ6D73P0qJZjp-dgYlD9If4"';
-     elseif key_counter < 9000
-         key = '"AIzaSyDdYFocs4Jdvp0DhfbPFNsvZeviNC9x6eo"'; 
-    elseif key_counter < 10000
-          key='"AIzaSyCFBZevCyqYzwrW-i0mbb0sMtFSUt-rAnA"';
-    elseif key_counter < 11000
-         key ='"AIzaSyAB5Qtjau-4enAmiWL-a_wMTq5Nvb9QPY8"';
-     elseif key_counter < 12000
-         key='"AIzaSyDniefmKJNv42I6w7kEkDQc2QLkLs-omQ0"';
- else
-         key='"AIzaSyCCweYzxC6BHSFqDbvDr6Jf4k1GNKWpivI"';
-        
- end
+if key_counter < 1000
+    key='"AIzaSyAfbZXBX5ZUq8Ux19h-XHb8SP19vNvghmY"';
+elseif key_counter < 2000
+    key='"AIzaSyCMEduOKdv_VZlNBQdzTXKzV_lKKMCJkEc"';
+elseif key_counter < 3000
+    key='"AIzaSyBW2b0HgPnv4922F9b6KtH7P9CrPU2H4GU"';
+elseif key_counter < 4000
+    key='"AIzaSyDeCuuOoRfDrXO5W5Fd-Js_IUNS4-PFFNo"';
+elseif key_counter < 5000
+    key='"AIzaSyDrvbHX9qtoBE27a3gGEdwa2UzYfzDgyX8"';
+elseif key_counter < 6000
+    key='"AIzaSyBpvmvux9H2uA696wyS3On0QwkPEmkSoj4"';
+elseif key_counter < 7000
+    key='"AIzaSyCg11sdt6F_twljdEn26zwGKazvvhNkL2c"';
+elseif key_counter < 8000
+    key='"AIzaSyDRcbZiM8y8lPqmEp7p7CBWku9GmnV5uPQ"';
+elseif key_counter < 9000
+    key = '"AIzaSyDgLBJTUpwPQ2q1HOEMxkAKG8qYmH4rqHo"';
+elseif key_counter < 10000
+    key='"AIzaSyDSSLVLmXG-1Z7TB4KkLWy912hlwGzo6ig"';
+elseif key_counter < 11000
+    key ='"AIzaSyAFnWosvYlOgm4PtzcgqoOZ6XsH4twOHjE"';
+elseif key_counter < 12000
+    key='"AIzaSyAF3D6geK2hJm5iDtadkbDYe66mwiVEJtE"';
+elseif key_counter < 13000
+    key='"AIzaSyBGXMtOR8Ft4KKFqjyc6GRO7m2R8OfJdpA"';
+elseif key_counter < 14000
+    key='"AIzaSyDl6Oef9zk_nrGLAxEfBawVCt1y9NryXd0"';
+elseif key_counter < 15000
+    key='"AIzaSyCCweYzxC6BHSFqDbvDr6Jf4k1GNKWpivI"';
+elseif key_counter < 16000
+    key='"AIzaSyBE-GOIVm2-uhWKeB1oINpmoSeyl7dUi3A"';
+elseif key_counter < 17000
+    key='"AIzaSyAl9rewC1BA-FQyu3iN5xb06_7d9eiiArU"';
+elseif key_counter < 18000
+    key='"AIzaSyBw4Pt8NYYIwRo-9GHsMWbqzlWVLO90_5c"';
+elseif key_counter < 19000
+    key='"AIzaSyDniefmKJNv42I6w7kEkDQc2QLkLs-omQ0"';
+elseif key_counter < 20000
+    key='"AIzaSyCDriOhv2l_pXTMkTLab3oJk0zVstjY-Hw"';
+elseif key_counter < 21000
+    key='"AIzaSyDdYFocs4Jdvp0DhfbPFNsvZeviNC9x6eo"';
+elseif key_counter < 22000
+    key='"AIzaSyB4sYk0TxrMElO2X4KjkhwjZBM2Xk49kuk"';
+elseif key_counter < 23000
+    key='"AIzaSyCX5QLIbuWlyRE32uRe9VkdmDjn7T-Won8"';
+elseif key_counter < 24000
+    key='"AIzaSyA9uNfnvSK1JpiYGd3VcCHM555U1ul7lxc"';
+elseif key_counter < 25000
+    key='"AIzaSyCAdizltwoqC3uDKpNH799inmGJHWrJJgM"';
+else
+    key='"AIzaSyAEHyYlYbuealIsdSWXc4G3HLR6MU8VElk"';
+    
+end
 end
 

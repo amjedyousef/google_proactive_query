@@ -68,6 +68,7 @@ cmnd=['/usr/bin/curl -X POST   ',server_name,' -H ',text_coding,' --data-binary 
 err = findstr('error' , response);
 if ~isempty(err)
     error = true;
+    disp(error) % debugging
 end
 
 warning_google='Daily Limit Exceeded'; %Error handling in case of exceeed API limit
