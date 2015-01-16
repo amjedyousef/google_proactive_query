@@ -49,7 +49,7 @@ my_path='/home/amjed/Documents/Gproject/workspace/data/WSDB_DATA';
 num_of_steps = [1 2 4 8 16 32 64 128];% 256];
 num_of_query_per_location = 20;
 distance_divider =  num_of_steps(length(num_of_steps));
-key_counter = 0; % used to switch google api keys 
+key_counter = 0; % used to switch google api keys
 fileId = 0 ;
 %Global Google parameters (refer to https://developers.google.com/spectrum/v1/paws/getSpectrum)
 height= 30.0; %In meters; Note: 'height' needs decimal value
@@ -79,7 +79,7 @@ for k=1:r
     for i = 1:length(num_of_steps)
         for j = 1:num_of_query_per_location
             fileId = fileId + 1 ;
-            counter = counter +1; 
+            counter = counter +1;
             disp(counter);
             %We need this counter to switch keys once we reachedf 1000
             %or a multiple of it
@@ -114,20 +114,21 @@ for k=1:r
         delay_temp = [] ;
         delay = [] ;
     end
-
-    %%
-    hold on
-    plot(num_of_steps , delay_google , '-*', 'LineWidth' , 2);
-    xlabel('Number of locations per one request');
-    ylabel('Delay (sec)');
-    set(gca,'FontSize',fontSize);
+    
     delay_google_vec = [delay_google_vec delay_google];
     delay_google = []; % reset required for the next step
 end
-legend('10km','10km','10km','50km','across US')
-hold off
-
-
+%%
+figure('Position',[440 378 560 420/3]);
+box on
+delay_google_mat = reshape(delay_google_vec,length(num_of_steps),[]);
+plot(num_of_steps , delay_google_mat , '-*', 'LineWidth' , 2);
+xlabel('Number of locations per one request');
+ylabel('Delay (sec)');
+set(gca,'FontSize',fontSize);
+legend('Path 1 (10 km)','Path 2 (10 km)','Path 3 (10 km)','Path 4 (50 km)','Path 5 (US Coast-Coast)')
+xlim([0, num_of_steps(end)]);
+ylim([0,max(delay_google_vec)]);
 %%
 %save the workspace
 save('google-delay-proactive-query-matlab-workspace.mat');
