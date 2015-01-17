@@ -114,24 +114,39 @@ for k=1:r
         delay_temp = [] ;
         delay = [] ;
     end
-    
     delay_google_vec = [delay_google_vec delay_google];
     delay_google = []; % reset required for the next step
 end
-%%
+%% Plot
 figure('Position',[440 378 560 420/3]);
 box on
+e = std(delay_google_mat);
+e = repmat(e ,length(num_of_steps),1 );
+e= e .* eye(size(e)); % to reduce the number of error bars in the firure fot clarity
 delay_google_mat = reshape(delay_google_vec,length(num_of_steps),[]);
-plot(num_of_steps , delay_google_mat , '-*', 'LineWidth' , 2);
+[r,c] = size(delay_google_mat);
+% shift the error bars in the figure for clarity  
+e(6,:) = e(1,:);
+e(7,:) = e(2,:);
+e(1,:)=zeros(1,c);
+e(2,:)=zeros(1,c);
+hold on
+for i=1:c
+h = errorbar(num_of_steps , delay_google_mat(:,i)'  , e(:,i) );
+end
+
+delay_google_mat = reshape(delay_google_vec,length(num_of_steps),[]);
+plot(num_of_steps , delay_google_mat , '-*', 'LineWidth' , 1.5);
 xlabel('Number of locations per one request');
 ylabel('Delay (sec)');
 set(gca,'FontSize',fontSize);
 legend('Path 1 (10 km)','Path 2 (10 km)','Path 3 (10 km)','Path 4 (50 km)','Path 5 (US Coast-Coast)')
 xlim([0, num_of_steps(end)]);
 ylim([0,max(delay_google_vec)]);
+
 %%
 %save the workspace
-save('google-delay-proactive-query-matlab-workspace.mat');
+save('google-delay-proactive-query');
 
 %%
 ['Elapsed time: ',num2str(toc/60),' min']
