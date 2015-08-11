@@ -44,7 +44,7 @@ clc;
 fontSize=16;
 %%
 %Path to save files (select your own)
-my_path='/home/amjed/Documents/Gproject/workspace/data/WSDB_DATA';
+my_path='/Users/amjed/Desktop/google_multi_location_query_along_5_paths/data';
 %%
 num_of_steps = [1 2 4 8 16 32 64 128];% 256];
 num_of_query_per_location = 20;
@@ -118,12 +118,13 @@ for k=1:r
     delay_google = []; % reset required for the next step
 end
 %% Plot
-figure('Position',[440 378 560 420/3]);
+figure('Position',[440 378 560 620/3]);
 box on
+delay_google_mat = reshape(delay_google_vec,length(num_of_steps),[]);
 e = std(delay_google_mat);
 e = repmat(e ,length(num_of_steps),1 );
 e= e .* eye(size(e)); % to reduce the number of error bars in the firure fot clarity
-delay_google_mat = reshape(delay_google_vec,length(num_of_steps),[]);
+% delay_google_mat = reshape(delay_google_vec,length(num_of_steps),[]);
 [r,c] = size(delay_google_mat);
 % shift the error bars in the figure for clarity  
 e(6,:) = e(1,:);
@@ -138,7 +139,7 @@ end
 delay_google_mat = reshape(delay_google_vec,length(num_of_steps),[]);
 plot(num_of_steps , delay_google_mat , '-*', 'LineWidth' , 1.5);
 xlabel('Number of locations per one request');
-ylabel('Delay (sec)');
+ylabel('Delay (s)');
 set(gca,'FontSize',fontSize);
 legend('Path 1 (10 km)','Path 2 (10 km)','Path 3 (10 km)','Path 4 (50 km)','Path 5 (US Coast-Coast)')
 xlim([0, num_of_steps(end)]);
